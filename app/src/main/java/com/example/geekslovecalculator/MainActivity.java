@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner spinner;
     ImageView imgView;
     @Override
@@ -25,7 +25,49 @@ public class MainActivity extends AppCompatActivity{
         ArrayAdapter<CharSequence> ad = ArrayAdapter.createFromResource(this,R.array.languages,android.R.layout.simple_spinner_item);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
+        spinner.setOnItemSelectedListener(this);
 
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String lang = spinner.getSelectedItem().toString();
+        if(imgView != null){
+            imgView.setImageResource(0);
+        }
+
+        imgView = (ImageView) findViewById(R.id.i1);
+
+        if(lang.equals("JAVA")){
+            imgView.setImageResource(R.drawable.jav);
+        }
+        else if(lang.equals("Python")){
+            imgView.setImageResource(R.drawable.python);
+        }
+        else if(lang.equals("C")){
+            imgView.setImageResource(R.drawable.c);
+        }
+        else if(lang.equals("C++")){
+            imgView.setImageResource(R.drawable.cp);
+        }
+        else if(lang.equals("C#")){
+            imgView.setImageResource(R.drawable.csh);
+        }
+        else if(lang.equals("JavaScript")){
+            imgView.setImageResource(R.drawable.js);
+        }
+        else if(lang.equals("Ruby")){
+            imgView.setImageResource(R.drawable.ruby);
+        }
+        else if(lang.equals("Kotlin")){
+            imgView.setImageResource(R.drawable.kotlin);
+        }
+        else{
+            imgView.setImageResource(0);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
     public void generate(View v){
