@@ -15,7 +15,9 @@
         android:gravity="center"
         android:text="Cupid's Calculator"
         android:textColor="#FF0000"
-        android:textSize="70px" />
+        android:textSize="80px"
+        />
+
 
     <EditText
         android:id="@+id/name"
@@ -35,6 +37,12 @@
         android:layout_height="wrap_content"
         android:onClick="generate"
         android:text="Throw Arrow" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/cupid"
+        android:layout_gravity="right"/>
 
     <TextView
         android:id="@+id/output"
@@ -42,11 +50,12 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:textSize="100px" />
+
     <ImageView
         android:id="@+id/i1"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        />
+        android:layout_height="84dp" />
+
 
 
 
