@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(ad);
         spinner.setOnItemSelectedListener(this);
+        TextView text = findViewById(R.id.convert_button);
+
+
     }
 
     @Override
@@ -44,33 +47,46 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         if(lang.equals("JAVA")){
             imgView.setImageResource(R.drawable.jav);
+            generate();
         }
         else if(lang.equals("Python")){
+            generate();
             imgView.setImageResource(R.drawable.python);
         }
+        else if(lang.equals("Choose a language")){
+            imgView.setImageResource(0);
+        }
         else if(lang.equals("C")){
+            generate();
             imgView.setImageResource(R.drawable.c);
         }
         else if(lang.equals("C++")){
+            generate();
             imgView.setImageResource(R.drawable.cp);
         }
         else if(lang.equals("C#")){
+            generate();
             imgView.setImageResource(R.drawable.csh);
         }
         else if(lang.equals("JavaScript")){
+            generate();
             imgView.setImageResource(R.drawable.js);
         }
         else if(lang.equals("Ruby")){
+            generate();
             imgView.setImageResource(R.drawable.ruby);
         }
         else if(lang.equals("Kotlin")){
+            generate();
             imgView.setImageResource(R.drawable.kotlin);
         }
         else{
             imgView.setImageResource(0);
         }
-        generate();
+
         fillTable(adapterView, numbers);
+
+
     }
 
 
@@ -79,16 +95,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-    public void generate(){
+    public boolean generate(){
         TextView text = findViewById(R.id.output);
+        TextView t2 = findViewById(R.id.convert_button);
         EditText input = findViewById(R.id.name);
         Random random = new Random();
         int perc = random.nextInt(100);
 
         text.setText(Integer.toString(perc)+"%");
         numbers[position] = perc;
+        t2.setVisibility(View.VISIBLE);
+        return true;
+
+
     }
-    public void generate(View v){
+    public boolean generate(View v){
         TextView text = findViewById(R.id.output);
         EditText input = findViewById(R.id.name);
         Random random = new Random();
@@ -96,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         text.setText(Integer.toString(perc)+"%");
         numbers[position] = perc;
+        return true;
     }
 
     public void fillTable(AdapterView parent, int[] percentages){
@@ -103,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         StringBuilder txt = new StringBuilder();
         String lang;
 
-        for(int i = 0; i < 8; i++){
+        for(int i = 1; i < 9; i++){
             //lang = "testing";
             lang = parent.getItemAtPosition(i).toString();
             for(int j = 0; j <= 16 - lang.length(); j++){
