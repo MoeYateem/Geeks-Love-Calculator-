@@ -59,5 +59,11 @@
         android:layout_height="84dp"
         android:layout_gravity="right" />
 
+    <TextView
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="288dp"
+        android:gravity="center"></TextView>
+
 
 </LinearLayout>
